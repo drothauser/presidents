@@ -1,0 +1,29 @@
+            ------
+            presidents UI Framework Evaluation Application - Database Documenation
+            ------
+
+presidents UI Framework Evaluation Application - Database Documenation
+	
+%{toc|class=toc|fromDepth=2}
+	
+* Entity Relationship Diagram
+
+[images/Presidents-ER.jpg] PRESIDENT Schema ER Diagram
+
+* STATE DDL
+
+%{include|source=src/main/resources/derby/STATE.sql|snippet=#STATE-DDL}
+
+* PARTY DDL
+
+%{include|source=src/main/resources/derby/PARTY.sql|snippet=#PARTY-DDL}
+
+* PRESIDENT DDL
+
+%{include|source=src/main/resources/derby/PRESIDENT.sql|snippet=#PRESIDENT-DDL}
+
+* PRESIDENTS_VIEW DDL
+
+%{include|source=src/main/resources/derby/PRESIDENTS_VIEW.sql|snippet=#PRESIDENT-VIEW-DDL}
+
+	

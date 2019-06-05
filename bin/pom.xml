@@ -41,10 +41,9 @@
 		</developer>
 	</developers>
 	<scm>
-		<connection>scm:git:git@github.com:drothauser/presidents.git</connection>
+		<connection>scm:git:git://github.com/drothauser/presidents.git</connection>
 		<developerConnection>scm:git:git@github.com:drothauser/presidents.git</developerConnection>
 		<url>https://github.com/drothauser/presidents</url>
-		<tag>HEAD</tag>
 	</scm>
 	<organization>
 		<url>http://dougonjava.blogspot.com/</url>

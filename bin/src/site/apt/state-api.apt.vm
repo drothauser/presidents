@@ -1,0 +1,286 @@
+            ------
+            American States REST services API 
+            ------
+
+U.S. State REST services API 
+
+	RESTful APIs for maintaining U.S. state data.
+	
+	
+%{toc|class=toc|fromDepth=2|toDepth=3}
+	
+* <Create>
+
+	API call that creates a new record in the {{{./db.html#STATE_DDL}STATE}} table.
+
+*-------------------+---------------------------+
+| <<URL:>>			| /rest/state				|
+*-------------------+---------------------------+
+| <<Method:>>		| POST						|
+*-------------------+---------------------------+
+| <<URL Params:>>	| None						|
+*-------------------+---------------------------+
+
+** Data Params
+
+	<<Notes:>>
+	
+	* Set id = 0 - The database will use auto-increment to set the next id.
+
++---------------------
+{  
+   "id":0,
+   "name":"Puerto Rico",
+   "abbreviation":"PR"
+}
++---------------------
+
+** Success Response
+
+	<<Code:>> 200
+
+	Plain text formatted as <<"Successfully added added state ">> + <State name> + "."
+	
+	<Example:>
+
+---------------------
+Successfully added Puerto Rico.
+---------------------
+
+** Error Response
+
+	<<Code:>> 4xx, 500
+	
+	Plain text containing the error message from the server. 
+	
+	<Example:>
+
+---------------------
+com.fcci.dao.DaoRuntimeException: SQLException caught: java.sql.SQLException: The check constraint ...
+---------------------
+
+** Sample Call
+
+	Sample call using jQuery:
+
+%{include|source=src/main/webapp/js/state-functions.js|snippet=#create}
+
+** Notes
+
+	Last updated by drothauser 07/27/2016
+
+* <Read>
+	
+	API call that reads a record from the STATE table.
+	
+*-------------------+-------------------------------------------+
+| <<URL:>>			| /rest/state/:id							|
+*-------------------+-------------------------------------------+
+| <<Method:>>		| GET										|
+*-------------------+-------------------------------------------+
+| <<URL Params:>>	| <<Required:>> integer	\					|
+| 					| <Example:> /rest/state/read/<<3>>			|
+*-------------------+-------------------------------------------+
+| <<Data Params:>>	| None										|
+*-------------------+-------------------------------------------+
+	
+** Success Response
+
+	Code: <<200>>
+	
+	Content: 
+	
++--------------------- 
+{  
+   "id":1,
+   "name":"Alabama",
+   "foundedYear":"AL"
+}
++---------------------
+
+** Error Response
+
+	<<Code:>> 4xx, 500
+	
+	Plain text containing the error message from the server. 
+	
+	<Example:>
+
+---------------------
+Could not find state with id: 99
+---------------------
+
+** Sample Call
+
+	Sample call using jQuery:
+
++--------------------- 
+function read() {	
+	$.getJSON(restURL + 'state/read', function(state){
+		window.status(state.name + " (" + state.abbreviation + ")");
+	}).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+		alert(XMLHttpRequest.responseText);
+    });
+}
++---------------------
+
+** Notes
+
+	Last updated by drothauser 08/03/2016
+
+* <List>
+
+*-------------------+---------------------------+
+| <<URL:>>			| /rest/state				|
+*-------------------+---------------------------+
+| <<Method:>>		| GET						|
+*-------------------+---------------------------+
+| <<URL Params:>>	| None						|
+*-------------------+---------------------------+
+| <<Data Params:>>	| None						|
+*-------------------+---------------------------+
+
+** Success Response
+
+	Code: <<200>>
+	
+	Content: <(excerpt)>
+	
++--------------------- 
+[  
+   {  
+      "id":1,
+      "name":"Alabama",
+      "abbreviation":"AL"
+   },
+   {  
+      "id":2,
+      "name":"Alaska",
+      "abbreviation":"AK"
+   }
+]
++--------------------- 
+
+** Error Response
+
+	Code: <<500>>
+
+** Sample Call
+
+	Sample call using jQuery:
+
+%{include|source=src/main/webapp/js/state-functions.js|snippet=#list}
+
+** Notes
+
+	Last updated by drothauser 07/27/2016
+
+* <Update>
+
+	API call that updates a record in the {{{./db.html#STATE_DDL}STATE}} table.
+	
+*-------------------+---------------------------+
+| <<URL:>>			| /rest/state				|
+*-------------------+---------------------------+
+| <<Method:>>		| PUT						|
+*-------------------+---------------------------+
+| <<URL Params:>>	| None						|
+*-------------------+---------------------------+
+
+** Data Params
+
+	<<Notes:>>
+	
+	* JSON payload.
+
++---------------------
+{  
+   "id":1,
+   "name":"Alabama",
+   "abbreviation":"al"
+}
++---------------------
+
+** Success Response
+
+	<<Code:>> 200
+
+	Plain text formatted as <<"Updated ">> + <State name>
+	
+	<Example:>
+
+---------------------
+Updated Alabama.
+---------------------
+
+** Error Response
+
+	<<Code:>> 4xx, 500
+	
+	Plain text containing the error message from the server. 
+	
+	<Example:>
+
+---------------------
+com.fcci.dao.DaoRuntimeException: SQLException caught: java.sql.SQLException: The check constraint...
+---------------------
+
+** Sample Call
+
+	Sample call using jQuery:
+
+%{include|source=src/main/webapp/js/state-functions.js|snippet=#update}
+
+** Notes
+
+	Last updated by drothauser 07/27/2016
+
+* <Delete>
+	
+	API call that deletes a record from the {{{./db.html#STATE_DDL}STATE}} table.
+	
+*-------------------+-------------------------------------------+
+| <<URL:>>			| /rest/state/:id							|
+*-------------------+-------------------------------------------+
+| <<Method:>>		| DELETE									|
+*-------------------+-------------------------------------------+
+| <<URL Params:>>	| <<Required:>> integer	\					|
+| 					| <Example:> /rest/state/delete/<<3>>		|
+*-------------------+-------------------------------------------+
+| <<Data Params:>>	| None										|
+*-------------------+-------------------------------------------+
+	
+** Success Response
+
+	<<Code:>> 200
+
+	Plain text formatted as <<"Deleted state ">> + <State name> + "."
+	
+	<Example:>
+
+---------------------
+Deleted Arizona.
+---------------------
+
+** Error Response
+
+	<<Code:>> 4xx, 500
+	
+	Plain text containing the error message from the server. 
+	
+	<Example:>
+
+---------------------
+Could not find state with id: 99
+---------------------
+
+** Sample Call
+
+	Sample call using jQuery:
+
+%{include|source=src/main/webapp/js/state-functions.js|snippet=#delete}
+
+
+** Notes
+
+	Last updated by drothauser 09/06/2016
