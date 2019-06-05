@@ -1,5 +1,7 @@
-derby.log 
-target 
+derby.log
+target
+bin
+C:
 /z.bat
 /.extract/
 /.flattened-pom.xml
