@@ -1,0 +1,303 @@
+            ------
+            President REST services API 
+            ------
+
+President REST services API 
+
+	RESTful APIs for maintaining U.S. president data.
+	
+	
+%{toc|class=toc|fromDepth=2|toDepth=3}
+	
+* <Create>
+	
+	API call that creates a new record in the {{{./db.html#PRESIDENT_DDL}PRESIDENT}} table.
+	
+*-------------------+---------------------------+
+| <<URL:>>			| /rest/president			|
+*-------------------+---------------------------+
+| <<Method:>>		| POST						|
+*-------------------+---------------------------+
+| <<URL Params:>>	| None						|
+*-------------------+---------------------------+
+
+** Data Params
+
+	<<Notes:>>
+	
+	* Set id = 0 - The database will use auto-increment to set the next id.
+	
+	* Refer to {{{./db.html#STATE_DDL}STATE}} and {{{./db.html#PARTY_DDL}PARTY}} tables for the their id values.
+
++---------------------
+{  
+   "id":0,
+   "firstname":"Donald",
+   "lastname":"Trump",
+   "stateId":32,
+   "partyId":5,
+   "inauguratedYear":2017,
+   "years":0
+}
++---------------------
+
+** Success Response
+
+	<<Code:>> 200
+
+	Plain text formatted as <<"Successfully added President ">> + <President's last name> + "."
+	
+	<Example:>
+
+---------------------
+Successfully added President Trump.
+---------------------
+
+** Error Response
+
+	<<Code:>> 4xx, 500
+	
+	Plain text containing the error message from the server. 
+	
+	<Example:>
+
+---------------------
+com.fcci.dao.DaoRuntimeException: SQLException caught: java.sql.SQLException: The check constraint 'SQL160726124347460' was violated while performing an INSERT or UPDATE on table '"TEST"."PRESIDENT"'. Query: insert into TEST.PRESIDENT ( FIRSTNAME , LASTNAME , STATE_ID , PARTY_ID , INAUGURATED_YEAR , YEARS ) values ( ? , ? , ? , ? , ? , ? )  Parameters: [Hillary, Clinton, 32, 5, 1700, 1]
+---------------------
+
+** Sample Call
+
+	Sample call using jQuery:
+
+%{include|source=src/main/webapp/js/president-functions.js|snippet=#create}
+
+** Notes
+
+	Last updated by drothauser 07/27/2016
+
+* <Read>
+	
+	API call that reads a record from the PRESIDENT table.
+	
+*-------------------+-------------------------------------------+
+| <<URL:>>			| /rest/president/:id						|
+*-------------------+-------------------------------------------+
+| <<Method:>>		| GET										|
+*-------------------+-------------------------------------------+
+| <<URL Params:>>	| <<Required:>> integer	\					|
+| 					| <Example:> /rest/president/read/<<3>>		|
+*-------------------+-------------------------------------------+
+| <<Data Params:>>	| None										|
+*-------------------+-------------------------------------------+
+	
+** Success Response
+
+	Code: <<200>>
+	
+	Content: 
+	
++--------------------- 
+{  
+   "id":4,
+   "firstname":"James",
+   "lastname":"Madison",
+   "stateId":46,
+   "partyId":2,
+   "inauguratedYear":1809,
+   "years":8.0
+}
++---------------------
+
+** Error Response
+
+	<<Code:>> 4xx, 500
+	
+	Plain text containing the error message from the server. 
+	
+	<Example:>
+
+---------------------
+Could not find president with id: 99
+---------------------
+
+** Sample Call
+
+	Sample call using jQuery:
+
+%{include|source=src/main/webapp/js/president-functions.js|snippet=#read}
+
+** Notes
+
+	Last updated by drothauser 08/03/2016
+
+* <List> 
+	
+	API call that reads all the presidents from the {{{./db.html#PRESIDENTS_VIEW_DDL}PRESIDENTS_VIEW}} and returns them in JSON format.
+	
+*-------------------+---------------------------+
+| <<URL:>>			| /rest/president			|
+*-------------------+---------------------------+
+| <<Method:>>		| GET						|
+*-------------------+---------------------------+
+| <<URL Params:>>	| None						|
+*-------------------+---------------------------+
+| <<Data Params:>>	| None						|
+*-------------------+---------------------------+
+
+** Success Response
+
+	Code: <<200>>
+	
+	Content: <(excerpt)>
+	
++--------------------- 
+[
+   {
+      "id":1,
+      "lastname":"Washington",
+      "firstname":"George",
+      "inauguratedYear":1789,
+      "years":8.0,
+      "state":"Virginia",
+      "party":null
+   },
+   {
+      "id":44,
+      "lastname":"Obama",
+      "firstname":"Barak",
+      "inauguratedYear":2009,
+      "years":8.0,
+      "state":"Illinois",
+      "party":"Democratic Party"
+   }
+]
++---------------------
+
+** Error Response
+
+	Code: <<500>>
+
+** Sample Call
+
+	Sample call using jQuery:
+
+%{include|source=src/main/webapp/js/president-functions.js|snippet=#list}
+
+** Notes
+
+	Last updated by drothauser 07/27/2016
+
+* <Update>
+	
+	API call that updates a record in the PRESIDENT table.
+	
+*-------------------+---------------------------+
+| <<URL:>>			| /rest/president			|
+*-------------------+---------------------------+
+| <<Method:>>		| PUT						|
+*-------------------+---------------------------+
+| <<URL Params:>>	| None						|
+*-------------------+---------------------------+
+
+** Data Params
+
+	<<Notes:>>
+	
+	* JSON payload.
+	
+	* Refer to {{{./db.html#STATE_DDL}STATE}} and {{{./db.html#PARTY_DDL}PARTY}} tables for the their id values.
+
++---------------------
+{  
+   "id":1,
+   "firstname":"George",
+   "lastname":"Washington",
+   "stateId":46,
+   "partyId":1,
+   "inauguratedYear":1789,
+   "years":8
+}
++---------------------
+
+** Success Response
+
+	<<Code:>> 200
+
+	Plain text formatted as <<"Successfully updated President ">> + <President's last name> + "."
+	
+	<Example:>
+
+---------------------
+Successfully updated President Washington.
+---------------------
+
+** Error Response
+
+	<<Code:>> 4xx, 500
+	
+	Plain text containing the error message from the server. 
+	
+	<Example:>
+
+---------------------
+com.fcci.dao.DaoRuntimeException: SQLException caught: java.sql.SQLException: The check constraint 'SQL160726124347460' was violated while performing an INSERT or UPDATE on table '"TEST"."PRESIDENT"'. Query: insert into TEST.PRESIDENT ( FIRSTNAME , LASTNAME , STATE_ID , PARTY_ID , INAUGURATED_YEAR , YEARS ) values ( ? , ? , ? , ? , ? , ? )  Parameters: [Hillary, Clinton, 32, 5, 1700, 1]
+---------------------
+
+** Sample Call
+
+	Sample call using jQuery:
+
+%{include|source=src/main/webapp/js/president-functions.js|snippet=#update}
+
+** Notes
+
+	Last updated by drothauser 07/27/2016
+
+* <Delete>
+	
+	API call that deletes a record from the PRESIDENT table.
+	
+*-------------------+-------------------------------------------+
+| <<URL:>>			| /rest/president/:id						|
+*-------------------+-------------------------------------------+
+| <<Method:>>		| DELETE									|
+*-------------------+-------------------------------------------+
+| <<URL Params:>>	| <<Required:>> integer	\					|
+| 					| <Example:> /rest/president/delete/<<3>>	|
+*-------------------+-------------------------------------------+
+| <<Data Params:>>	| None										|
+*-------------------+-------------------------------------------+
+	
+** Success Response
+
+	<<Code:>> 200
+
+	Plain text formatted as <<"Successfully deleted President ">> + <President's last name> + "."
+	
+	<Example:>
+
+---------------------
+Successfully updated President Washington.
+---------------------
+
+** Error Response
+
+	<<Code:>> 4xx, 500
+	
+	Plain text containing the error message from the server. 
+	
+	<Example:>
+
+---------------------
+Could not find president with id: 99
+---------------------
+
+** Sample Call
+
+	Sample call using jQuery:
+
+%{include|source=src/main/webapp/js/president-functions.js|snippet=#delete}
+
+** Notes
+
+	Last updated by drothauser 08/06/2016

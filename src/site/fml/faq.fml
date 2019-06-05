@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs xmlns="http://maven.apache.org/FML/1.0.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/FML/1.0.1 http://maven.apache.org/xsd/fml-1.0.1.xsd"
+	title="Frequently Asked Questions" toplink="false">
+
+	<part id="general">
+		<title>General</title>
+
+		<faq id="how-build">
+			<question>
+				How do I build this project?
+      		</question>
+			<answer>
+				<p>Use the following Maven mvn commands in order:</p>
+
+				<ol>
+					<li><b>mvn clean test -DreuseForks=false -T3</b> Runs the Junit tests using 3 threads.</li>					
+					<li><b>mvn clean install site -DreuseForks=false</b> Build the project and generate Maven documentation site.</li>
+				</ol>
+				
+				<p>To run one of these build phases in Eclipse, follow these steps:</p>
+				<ul>
+					<li>In the project, right click on the pom.xml file or the project name itself.</li>
+					<li>Click on <b>Run As</b>.</li>
+					<li>Run the desired build phase.</li>
+				</ul>
+				<p><i>Example build phase menu in Eclipse:</i></p>
+				<img src="./images/mvn-build.png" alt="Maven build phase menu in Eclipse" />
+			</answer>
+		</faq>
+	</part>
+
+</faqs>

@@ -1,0 +1,61 @@
+            ------
+            presidents UI Framework Evaluation Application - Validation Documenation
+            ------
+
+presidents UI Framework Evaluation Application - Validation
+
+	The presidents application uses Jersey's Bean Validation Support which supports JSR 303 and JSR 349. Each resource and DTO bean 
+	use validation annotations to give you examples of this important aspect of a solid RESTful application.
+	
+%{toc|class=toc|fromDepth=2}
+
+* President Validation Rules
+
+	* <<First name>>: Required, 3 to 40 characters.
+	
+	* <<Last name>>: Required, 3 to 40 characters.
+	
+	* <<State>>: Required, stateid integer in STATE table.
+	
+	* <<Party>>: Optional. If supplied, partyid integer in PARTY table.
+	
+	* <<Inaugerated Year>>: 4 digits, 1789 or greater.
+	
+	* <<Years in Office>>: Between 1 and 12.
+
+	[]
+
+* Party Validation Rules
+
+	* <<Name>>: Required, 3 to 255 characters.
+	
+	* <<Founded Year>>: Required, 4 digits, must be 1789 or greater.
+	
+	* <<End Year>>: Optional, if supplied be greater than or equal to the founded year.
+	
+	[]
+
+
+* State Validation Rules
+
+	* <<Name>>: Required, 3 to 255 characters.
+	
+	* <<Abbreviation>>: Required, 2 characters.
+	
+	[]
+
+
+* Resources
+
+	* {{{https://jersey.java.net/documentation/latest/bean-validation.html}Jersey Bean Validation Support}}
+	
+	* {{{https://www.owasp.org/index.php/Bean_Validation_Cheat_Sheet}OWASP Bean Validation Cheat Sheet}}
+	
+	* {{{http://beanvalidation.org/1.0/spec}JSR 303: Bean Validation}}
+	
+	* {{{http://www.baeldung.com/javax-validation}Java Bean Validation Basics}}
+	
+	[]
+	
+
+	

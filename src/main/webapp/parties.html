@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=11" />  
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>Parties</title>
+
+	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script> 	
+	<script type="text/javascript" src="js/common.js"></script> 
+	<script type="text/javascript" src="js/party-functions.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	
+</head>
+<body>
+ 	
+<div id="spinner">
+	<img src="images/ajax-loader.gif" title="working...">
+</div>
+	
+<div class="container">
+
+<header>
+   <img src="images/potus.jpg" />
+</header>
+  
+<nav>
+  <ul>
+  	<li><a href="index.html">Home</a>
+  	<li><a href="presidents.html">Presidents</a>
+	<li><a href="states.html">States</a>
+	<li><a href="#"><strong>Parties</strong></a>
+  </ul>
+</nav>
+
+<article>
+	<form id="frmParty">
+		<input type="hidden" id="txtId" value="">
+		<ul>
+			<li><label for="txtName">Name:</label> <input type="text"
+				id="txtName" /></li>
+			<li><label for="txtAbbr">Founded Year:</label> <input type="text"
+				id="txtFoundedYear" /></li>
+			<li><label for="txtAbbr">End Year:</label> <input type="text"
+				id="txtEndYear" /></li>
+			<li><input type="submit" value="Save" id="btnSave" /></li>			
+		</ul>
+	</form>
+	<table id="tblList">
+	</table>
+</article>
+
+<footer>Copyright © fcci-group.com</footer>
+
+</div>
+
+</body>
+</html>

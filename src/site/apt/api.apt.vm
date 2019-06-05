@@ -1,0 +1,17 @@
+            ------
+            presidents API Documentation
+            ------
+
+presidents API Documentation
+
+	The presidents application exposes create, read, update and delete RESTful APIs for 
+	viewing and maintaining information about the U.S. Presidents.
+	
+	U.S. President REST API Documentation:
+	
+	* {{{./president-api.html#PRESIDENT_DDL}PRESIDENT}} 
+	
+	* {{{./party-api.html#PRESIDENT_DDL}PARTY}}
+	 
+	* {{{./state-api.html#PRESIDENT_DDL}STATE}} 
+	
