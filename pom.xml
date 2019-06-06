@@ -115,7 +115,7 @@
 		<dependency>
 			<groupId>net.rothsmith</groupId>
 			<artifactId>rothsmith-testutils</artifactId>
-			<version>[1.0.0,)</version>
+			<version>[1.0.0-SNAPSHOT,)</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -143,7 +143,7 @@
 		<dependency>
 			<groupId>net.rothsmith</groupId>
 			<artifactId>genericdao-dbutils</artifactId>
-			<version>[1.0.0,)</version>
+			<version>[1.0.0-SNAPSHOT,)</version>
 			<exclusions>
 				<exclusion>
 					<groupId>com.oracle</groupId>
