@@ -18,7 +18,8 @@
 
 	<properties>
 		<revision>1.0.0</revision>
-		<changelist>-SNAPSHOT</changelist>
+		<rothsmith-dependency-version-dev>(,${revision}-SNAPSHOT]</rothsmith-dependency-version-dev>
+		<rothsmith-dependency-version-release>(,${revision}-][${revision}-,)</rothsmith-dependency-version-release>
 		<pmd.rulesfile>pmdrules.xml</pmd.rulesfile>
 		<checkstyle.config>checkstyle_checks.xml</checkstyle.config>
 		<jersey.version>2.23.2</jersey.version>
