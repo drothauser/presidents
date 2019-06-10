@@ -52,6 +52,31 @@
 	</organization>
 	<dependencies>
 		<dependency>
+			<groupId>net.rothsmith</groupId>
+			<artifactId>rothsmith-testutils</artifactId>
+			<version>${rothsmith-dependency-version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.rothsmith</groupId>
+			<artifactId>genericdao-dbutils</artifactId>
+			<version>${rothsmith-dependency-version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.oracle</groupId>
+					<artifactId>ojdbc6</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>net.sf.jt400</groupId>
+					<artifactId>jt400</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.microsoft</groupId>
+					<artifactId>sqlserver-driver</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<scope>provided</scope>
@@ -113,12 +138,6 @@
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>net.rothsmith</groupId>
-			<artifactId>rothsmith-testutils</artifactId>
-			<version>[1.0.0-SNAPSHOT,)</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 			<version>3.2.1</version>
@@ -136,26 +155,6 @@
 				<exclusion>
 					<artifactId>dom4j</artifactId>
 					<groupId>dom4j</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>net.rothsmith</groupId>
-			<artifactId>genericdao-dbutils</artifactId>
-			<version>[1.0.0-SNAPSHOT,)</version>
-			<exclusions>
-				<exclusion>
-					<groupId>com.oracle</groupId>
-					<artifactId>ojdbc6</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>net.sf.jt400</groupId>
-					<artifactId>jt400</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.microsoft</groupId>
-					<artifactId>sqlserver-driver</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
