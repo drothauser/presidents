@@ -18,8 +18,6 @@
 
 	<properties>
 		<revision>1.0.0</revision>
-		<rothsmith-dependency-version-dev>(,${revision}-SNAPSHOT]</rothsmith-dependency-version-dev>
-		<rothsmith-dependency-version-release>(,${revision}-][${revision}-,)</rothsmith-dependency-version-release>
 		<pmd.rulesfile>pmdrules.xml</pmd.rulesfile>
 		<checkstyle.config>checkstyle_checks.xml</checkstyle.config>
 		<jersey.version>2.23.2</jersey.version>
@@ -54,14 +52,10 @@
 	<dependencies>
 		<dependency>
 			<groupId>net.rothsmith</groupId>
-			<artifactId>rothsmith-testutils</artifactId>
-			<version>${rothsmith-dependency-version}</version>
-			<scope>test</scope>
-		</dependency>
+			<artifactId>rothsmith-testutils</artifactId>		</dependency>
 		<dependency>
 			<groupId>net.rothsmith</groupId>
 			<artifactId>genericdao-dbutils</artifactId>
-			<version>${rothsmith-dependency-version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>com.oracle</groupId>
@@ -76,11 +70,6 @@
 					<artifactId>sqlserver-driver</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>net.rothsmith</groupId>
-			<artifactId>rothsmith-encrypt</artifactId>
-			<version>${rothsmith-dependency-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
