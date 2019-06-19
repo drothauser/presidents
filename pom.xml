@@ -9,7 +9,6 @@
 		<version>1.0.0</version>
 	</parent>
 	<artifactId>presidents</artifactId>
-	<groupId>com.rothsmith</groupId>
 	<name>presidents</name>
 	<version>${revision}${changelist}</version>
 	<packaging>war</packaging>
