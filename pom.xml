@@ -21,7 +21,6 @@
 		<checkstyle.config>checkstyle_checks.xml</checkstyle.config>
 		<jersey.version>2.23.2</jersey.version>
 		<tomcat.version>8.0.36</tomcat.version>
-		<tomcat.plugin.version>2.3-SNAPSHOT</tomcat.plugin.version>
 	</properties>
 
 	<ciManagement>
